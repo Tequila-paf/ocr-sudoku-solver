@@ -1,0 +1,4 @@
+tout est bon pour cette partie normalement
+pour tester:
+	taper commande 'make' et './solver {NOM_DE_LA_GRILLE}'
+ouvrir fichier '.result'

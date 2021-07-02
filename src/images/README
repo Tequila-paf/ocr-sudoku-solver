@@ -1,0 +1,7 @@
+"images" directory:
+
+[1 - 9] directories : training samples approx. 18 img per digit
+
+validation_set : images to test network during training and stop early if necessary
+
+

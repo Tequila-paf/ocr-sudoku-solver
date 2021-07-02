@@ -1,0 +1,7 @@
+display.c:
+		Test l'affichage d'une image
+grayscale.c:
+		Applique la fonction grayscale puis binarise l'image
+		
+pixel_operation.c
+		fonctions utiles du tp sdl pour manipuler pixels
