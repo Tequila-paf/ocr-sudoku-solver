@@ -14,7 +14,7 @@ The Sudoku solving algorithm I used is from GeeksForGeeks (I could have tried to
 
 
 # Getting started
-> To launch the UI: go to "ocr-sudoku-solver/src/gui" and enter "make". Then select a grid and click on "Solve Sudoku"
+> To launch the UI: go to "ocr-sudoku-solver/src/gui", enter "make", and enter "./ui". Then select a grid and click on "Solve Sudoku".
 
 
 # Authors
