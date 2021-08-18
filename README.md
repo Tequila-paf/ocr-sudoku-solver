@@ -10,7 +10,7 @@ All the code is written in C, and I used the SDL library to manipulate the image
 But the project is incomplete, the neural network doesn't work as expected. The NN perfoms well on the training set, but fails to recognize new images.
 
 
-#AUTHORS
+# AUTHORS
 
 Sanassi Mory Cisse
 sanassicisse@outlook.fr
