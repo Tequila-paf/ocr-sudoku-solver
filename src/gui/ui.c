@@ -66,6 +66,8 @@ void Quit()
 	remove("../images/tmp_images/rotated_image.bmp");
 	remove("../images/tmp_images/sobel.bmp");
 	remove("../images/tmp_images/result.bmp");
+
+
 	gtk_main_quit();
 	gtk_widget_destroy(GTK_WIDGET(window));
 }
