@@ -52,8 +52,8 @@ void LoadFile(GtkWidget *file_chooser)
 	g_print("%s\n", path);
 	image_to_process = load_image(path);
 	image_copy = copy_image(image_to_process);
-
 	Display(path);
+	Rescale();
 }
 
 void Quit()
@@ -98,9 +98,9 @@ void Solve()
 
 	Segmentation(image_to_process, &grid_pos_x, &grid_pos_y, 1.5, hough_threshold);
 
-// HERE : BUILD RESULT GRID
+	// HERE : BUILD RESULT GRID
 
-//	BuildGridToSolve();  //unquote when network is ok
+	BuildGridToSolve();  //unquote when network is ok
 	 
 	SolveGrid("../image_processing/grid");
 
@@ -194,6 +194,7 @@ void RotateImage()
 			angle = 360 - angle;
 		}
 		Rotate(image_to_process, angle);
+	
 		Rotate(image_copy, angle);
 	}
 
@@ -210,6 +211,18 @@ void TrainNetworkClient(int nbEpoch, double eta)
 	Train(net, nbEpoch);
 	DisplayResultsTrainingSample(net);
 	g_print("\n");
+}
+
+void Rescale()
+{
+	if (1)
+	{
+		cairo_surface_t *cr_surface = cairo_image_surface_create_from_png(path);
+		cairo_t *cr = cairo_create(cr_surface);
+		cairo_scale(cr, 0.5, 0.5);
+		cairo_set_source_surface(cr, cr_surface, 0, 0);
+		cairo_surface_write_to_png(cr_surface, "rescaled.png");
+	}
 }
 
 void Sobel()

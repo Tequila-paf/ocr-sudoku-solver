@@ -30,4 +30,6 @@
 
 int LaunchUserInterface(int argc, char **argv);
 
+void Rescale();
+
 #endif

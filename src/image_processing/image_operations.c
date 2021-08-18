@@ -469,6 +469,7 @@ void DrawImages(SDL_Surface *img, int px, int py, int h, int w, char *grid_input
 			if (c1 == '.' && (c2 > 48 && c2 < 58))
 			{
 				path[37] = c2;
+				//path[37] = 'c';
 
 				DrawImage(img, path, i, j, h, w);
 			}

@@ -15,7 +15,7 @@ struct Network *Init()
 
 	net -> nb_input = 784;
 	net -> nb_output = 9;
-	net -> nb_hidden = 30; 
+	net -> nb_hidden = 50; 
 
 	net -> eta = 0.5;
 
@@ -169,6 +169,8 @@ void LoadTrainingSample(struct Network *net, char *img_path)
 		return;
 	}
 
+	binarize(img);
+
 	Uint32 pixel;
 	Uint8 r, g, b;
 
@@ -200,7 +202,7 @@ void LoadTrainingSample(struct Network *net, char *img_path)
 
 void MeanSquaredError(struct Network *net)
 {
-	double sum = 0;
+	long sum = 0;
 
 	for (int i = 0; i < net -> nb_output; i++)
 	{
@@ -220,9 +222,9 @@ void BackPropagation(struct Network *net)
 
 
 	/*-----------------hidden layer errors--------------------*/
-	double sum, w, err; // sum: weighted sum; w: weight; err: error from next layer
+	long sum, w, err; // sum: weighted sum; w: weight; err: error from next layer
 	
-	double w_h_o_t[net -> nb_hidden][net -> nb_output]; // w_h_o_t: transpose matrix of w_h_o
+	long w_h_o_t[net -> nb_hidden][net -> nb_output]; // w_h_o_t: transpose matrix of w_h_o
 
 	/*begin transpose operation*/
 
@@ -254,8 +256,8 @@ void BackPropagation(struct Network *net)
 
 void UpdateWeights(struct Network *net)
 {
-	double eta = net -> eta;
-	double err, act, d_act; // err: error from next layer act: activation from current layer; d_act: d_sigmoid of next layer activation
+	long eta = net -> eta;
+	long err, act, d_act; // err: error from next layer act: activation from current layer; d_act: d_sigmoid of next layer activation
 
 	// update weights between hidden and output layer (w_h_o)
 	for (int i = 0; i < net -> nb_output; i++)
@@ -291,9 +293,9 @@ void UpdateWeights(struct Network *net)
 
 void UpdateBiases(struct Network *net)
 {
-	double eta = net -> eta;
+	long eta = net -> eta;
 
-	double err, d_act;
+	long err, d_act;
 	// biases output
 	
 	for (int i = 0; i < net -> nb_output; i++)
@@ -336,7 +338,7 @@ void OCR_TrainingSample(struct Network *net, char *img_path)
 int GetResult(struct Network *net)
 {
 	int pos = 0;
-	double max_act = - DBL_MAX;
+	long max_act = -500000;
 
 	for (int i = 0; i < net -> nb_output; i++)
 	{
@@ -464,7 +466,7 @@ void Train(struct Network *net, int nbEpoch)
 		
 		if (epoch % 2 == 0)
 		{
-			double test_accuracy = GetValidationAccuracy(net);
+			long test_accuracy = GetValidationAccuracy(net);
 
 			net -> accuracy = test_accuracy;
 
@@ -494,7 +496,7 @@ void Train(struct Network *net, int nbEpoch)
 				//early_exit = 1;
 				break;
 			}
-			printf("Epoch #%i : %i / %i ; error : %f\n", epoch, nbOK, nb, net -> error_rate);
+			printf("Epoch #%i : %i / %i ; error : %li\n", epoch, nbOK, nb, net -> error_rate);
 		}
 		nbOK = 0;
 	}
@@ -508,17 +510,17 @@ void Train(struct Network *net, int nbEpoch)
 
 /*-------------------Miscellaneous functions----------------------*/
 
-double Random()
+long Random()
 {
 	return ((double) rand()) / ((double) RAND_MAX / 2) - 1; ;
 }
 
-double Sigmoid(double x)
+long Sigmoid(double x)
 {
 	return 1 / (1 + exp(-x));
 }
 
-double d_Sigmoid(double x)
+long d_Sigmoid(double x)
 {
 	return x * (1 - x); // or sigmoid(x) * (1 - sigmoid(x)) : why ? x has already been "sigmoided" during feedforward
 }
@@ -543,7 +545,7 @@ void Shuffle(int *array, int size)
 // apply softmax function to net's output layer
 void Softmax(struct Network *net)
 {
-	double denominator = 0;
+	long denominator = 0;
 
 	for (int i = 0; i < net -> nb_output; i++)
 	{

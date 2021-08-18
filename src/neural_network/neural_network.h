@@ -20,49 +20,49 @@ struct Network
 
 	// learning rate
 	
-	double eta;
+	long eta;
 
 	// accuracy
-	double accuracy;
-	double max_accuracy;
+	long accuracy;
+	long max_accuracy;
 
-	double error_rate;
+	long error_rate;
 
 	// layers
-	double input[784];
-	double hidden[30];
-	double output[9];
+	long input[784];
+	long hidden[50];
+	long output[9];
 
-	double softmax_layer[9];
+	long softmax_layer[9];
 
 
 	// weights w_{layer_1}{layer_2}
 	
-	double w_i_h[30][784];
-	double w_h_o[9][30];
+	long w_i_h[50][784];
+	long w_h_o[9][50];
 
 
 	// biases b_{hidden / output}
 	
-	double b_h[30];
-	double b_o[9];
+	long b_h[50];
+	long b_o[9];
 
 	// error vectors err_{hidden / output}
 	
-	double err_o[9];
-	double err_h[30];
+	long err_o[9];
+	long err_h[50];
 
 	// goal vector
 	
-	double goal[9];
+	long goal[9];
 
 	// delta matrices (weights and biases)
 	
-	double d_w_i_h[30][784];
-	double d_w_h_o[9][30];
+	long d_w_i_h[50][784];
+	long d_w_h_o[9][50];
 
-	double d_b_h[10];
-	double d_b_o[9];
+	long d_b_h[50];
+	long d_b_o[9];
 };
 
 /*----------------Initialize network--------------------*/
@@ -92,9 +92,9 @@ float GetValidationAccuracy(struct Network *net);
 
 void MeanSquaredError(struct Network *net);
 /*---------------Miscellaneous functions----------------*/
-double Random();
-double Sigmoid(double x);
-double d_Sigmoid(double x);
+long Random();
+long Sigmoid(double x);
+long d_Sigmoid(double x);
 void Shuffle(int *array, int size);
 void Softmax(struct Network *net);
 void d_Softmax(struct Network *net);
