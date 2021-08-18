@@ -8,10 +8,11 @@ To detect the digits, I implemented a neural network, trained on binarized 28x28
 All the code is written in C, and I used the SDL library to manipulate the images. I wrote most of the code, except for the binarization algorithm (using otsu's method), written by another memeber of my group.
 
 But the project is incomplete, the neural network doesn't work as expected. The NN perfoms well on the training set, but fails to recognize new images.
-Also, the line detection method (using hough transform) is relatively slow.
+Also, the line detection method (using hough transform and sobel filters) is relatively slow.
 
 The Sudoku solving algorithm I used is from GeeksForGeeks (I could have tried to write one myself but I ran out of time)
 
+Also, I wasn't able to find a way to resize large images and conserve the aspect ratio (using the SDL library), so when the images are too big the application can't display them entirely.
 
 # Getting started
 > To launch the UI: go to "ocr-sudoku-solver/src/gui", enter "make", and enter "./ui". Then select a grid and click on "Solve Sudoku".
