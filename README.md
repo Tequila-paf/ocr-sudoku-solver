@@ -17,6 +17,10 @@ Also, I wasn't able to find a way to resize large images and conserve the aspect
 # Getting started
 > To launch the UI: go to "ocr-sudoku-solver/src/gui", enter "make", and enter "./ui". Then select a grid and click on "Solve Sudoku".
 
+# TODO
+- Fix NN training
+- Find a way to resize large images
+- optimize line detection algorithm to decrease run time
 
 # Authors
 
