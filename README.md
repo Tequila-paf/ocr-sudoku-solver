@@ -25,4 +25,3 @@ Also, I wasn't able to find a way to resize large images and conserve the aspect
 # Authors
 
 Sanassi Mory Cisse
-sanassicisse@outlook.fr
