@@ -3,7 +3,7 @@ C application to solve a sudoku from input image (cs group project for 3rd semes
 
 # Description
 The application takes an image containing a sudoku as an input, processes the image, recognizes the digits , builds the grid to solve, and displays the solved sudoku.
-To detect the digits, I implemented a neural network, trained on binarized 28x28 digits stored in the "images" folder.
+To detect the digits, I tried to build a neural network, trained on binarized 28x28 digits stored in the "images" folder.
 
 All the code is written in C, and I used the SDL library to manipulate the images. I wrote most of the code, except for the binarization algorithm (using otsu's method), written by another memeber of my group.
 
